@@ -43,6 +43,7 @@ services:
       - MYSQL_HOST=eason.nextcloud.db
       - NEXTCLOUD_ADMIN_USER=${EASON_NEXTCLOUD_ADMIN_USER}
       - NEXTCLOUD_ADMIN_PASSWORD=${EASON_NEXTCLOUD_ADMIN_USER_PASSWORD}
+      - NEXTCLOUD_TRUSTED_DOMAINS=${EASON_NEXTCLOUD_TRUSTED_DOMAINS}  # space-separated list of domains
 
   # SeFo
   sefo.ubuntu20-cuda11:
