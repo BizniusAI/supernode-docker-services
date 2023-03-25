@@ -5,8 +5,43 @@ version: '3.8'
 # 8100 ~ 8199: Reserved for Eason
 # 8200 ~ 8299: Reserved for SeFo
 # 8300 ~ 8399: Reserved for Hong Wang
+
+# Note:
+# Don't forget excute `sudo ufw allow {PORT_NUMBER}` to open the port for firewall.
+
 services:
   # Eason
+  eason.nextcloud.db:
+    image: mariadb:10.5
+    restart: always
+    networks:
+      - eason
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - eason.nextcloud.db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${EASON_NEXTCLOUD_DB_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${EASON_NEXTCLOUD_DB_USER_PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloudAdmin
+  eason.nextcloud.app:
+    image: nextcloud:26.0.0-apache
+    restart: always
+    networks:
+      - eason
+    ports:
+      - "8180:80"
+    links:
+      - eason.nextcloud.db
+    volumes:
+      - eason.nextcloud:/var/www/html
+      - ${EASON_NEXTCLOUD_DATA_DIRECTORY}:/var/www/html/data
+    environment:
+      - MYSQL_PASSWORD=${EASON_NEXTCLOUD_DB_USER_PASSWORD}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloudAdmin
+      - MYSQL_HOST=eason.nextcloud.db
+
   # SeFo
   sefo.ubuntu20-cuda11:
     build:
@@ -36,3 +71,7 @@ networks:
     driver: bridge
   hongwang:
     driver: bridge
+
+volumes:
+  eason.nextcloud:
+  eason.nextcloud.db:
