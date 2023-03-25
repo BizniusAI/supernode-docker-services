@@ -1,8 +1,18 @@
 version: '3.8'
 
+# Port number reservations:
+# 8000 ~ 8099: Reserved for host
+# 8100 ~ 8199: Reserved for Eason
+# 8200 ~ 8299: Reserved for SeFo
+# 8300 ~ 8399: Reserved for Hong Wang
 services:
-  sefo.cuda-12.1:
+  # Eason
+  # SeFo
+  sefo.cuda12:
     build: ./services/cuda-12.1-ubuntu-20.04
     restart: unless-stopped
+    networks:
+      - sefo
     ports:
       - 8220:22
+  # Hong Wang
