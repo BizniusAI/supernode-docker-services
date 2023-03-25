@@ -30,7 +30,7 @@ services:
     networks:
       - eason
     ports:
-      - "8180:80"
+      - "127.0.0.1:8180:80"
     links:
       - eason.nextcloud.db
     volumes:
