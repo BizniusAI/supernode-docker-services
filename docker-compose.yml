@@ -17,6 +17,13 @@ services:
       - "8220:22"
     volumes:
       - ./keys/sefo-ssh-keys:/root/.ssh/authorized_keys
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   # Hong Wang
 
 networks:
