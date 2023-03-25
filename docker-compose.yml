@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   sefo.cuda-12.1:
-    build: ./cuda-12.1-ubuntu-20.04
+    build: ./services/cuda-12.1-ubuntu-20.04
     restart: unless-stopped
     ports:
       - 8220:22
