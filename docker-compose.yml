@@ -16,3 +16,11 @@ services:
     ports:
       - 8220:22
   # Hong Wang
+
+networks:
+  eason:
+    driver: bridge
+  sefo:
+    driver: bridge
+  hongwang:
+    driver: bridge
