@@ -14,7 +14,7 @@ services:
     networks:
       - sefo
     ports:
-      - 8220:22
+      - "8220:22"
   # Hong Wang
 
 networks:
