@@ -8,7 +8,7 @@ version: '3.8'
 services:
   # Eason
   # SeFo
-  sefo.ubuntu20-cuda12:
+  sefo.ubuntu20-cuda11:
     build: ./services/cuda-12.1-ubuntu-20.04
     restart: unless-stopped
     networks:
