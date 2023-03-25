@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-devel-ubuntu20.04
+FROM nvidia/cuda:12.1.0-base-ubuntu20.04
 LABEL maintainer = "An-Ting Hsu"
 
 ENV DEBIAN_FRONTEND noninteractive
