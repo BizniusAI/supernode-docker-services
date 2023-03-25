@@ -9,7 +9,10 @@ services:
   # Eason
   # SeFo
   sefo.ubuntu20-cuda11:
-    build: ./services/cuda-11.7-ubuntu-20.04
+    build:
+      context: ./services/cuda-11.7-ubuntu-20.04
+      args:
+        - ROOT_PASSWORD=${SEFO_CUDA_ROOT_PASSWORD}
     restart: unless-stopped
     networks:
       - sefo

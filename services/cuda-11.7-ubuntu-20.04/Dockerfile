@@ -2,6 +2,7 @@ FROM nvidia/cuda:11.7.1-base-ubuntu20.04
 LABEL maintainer = "An-Ting Hsu"
 
 ENV DEBIAN_FRONTEND noninteractive
+ARG ROOT_PASSWORD
 
 # Set apt mirror, using NCHC's server
 RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' \
@@ -41,7 +42,7 @@ RUN apt-get install -y \
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
-RUN echo 'root:SeFoToTheMoon' | chpasswd
+RUN echo "root:${ROOT_PASSWORD}" | chpasswd
 
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN mkdir /root/.ssh

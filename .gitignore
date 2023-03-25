@@ -75,3 +75,7 @@ tags
 .history
 
 # End of https://www.gitignore.io/api/vim,linux,macos,visualstudiocode
+
+# local env files
+.env*
+!.env.example
