@@ -8,13 +8,15 @@ version: '3.8'
 services:
   # Eason
   # SeFo
-  sefo.cuda12:
+  sefo.ubuntu20-cuda12:
     build: ./services/cuda-12.1-ubuntu-20.04
     restart: unless-stopped
     networks:
       - sefo
     ports:
       - "8220:22"
+    volumes:
+      - ./keys/sefo-ssh-keys:/root/.ssh/authorized_keys
   # Hong Wang
 
 networks:

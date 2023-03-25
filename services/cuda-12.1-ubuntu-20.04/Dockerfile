@@ -41,10 +41,9 @@ RUN apt-get install -y \
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
-RUN echo 'root:root' | chpasswd
+RUN echo 'root:SeFoToTheMoon' | chpasswd
 
-RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN mkdir /root/.ssh
 
 # Cleanup
