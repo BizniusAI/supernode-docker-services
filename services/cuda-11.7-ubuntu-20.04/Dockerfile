@@ -44,6 +44,7 @@ RUN mkdir /var/run/sshd
 
 RUN echo "root:${ROOT_PASSWORD}" | chpasswd
 
+RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN mkdir /root/.ssh
 
